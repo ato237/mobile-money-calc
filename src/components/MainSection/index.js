@@ -12,16 +12,15 @@ import {
 	CalcContainer,
 	CalcHeader,
 	CalcHeaderItem,
-	CalcLinks
+	CalcLinks,
 } from "./MainSectionElements";
 import { Button } from "../ButtonElement";
 
 import video from "./video.mp4";
 import { FaCalculator } from "react-icons/fa";
-
+import Tab from "../SimpleTab";
 
 const MainSection = (Orange) => {
-
 	const [hover, setHover] = useState(false);
 
 	const onHover = () => {
@@ -29,9 +28,7 @@ const MainSection = (Orange) => {
 	};
 	return (
 		<MainContainer>
-			<MainBg>
-				
-			</MainBg>
+			<MainBg></MainBg>
 			<MainContent>
 				<MainH1> Charges Calculator </MainH1>
 				<MainP>
@@ -47,7 +44,7 @@ const MainSection = (Orange) => {
 						Get Started {hover ? <ArrowForward /> : <ArrowRight />}
 					</Button>*/}
 				</MainBtnWrapper>
-				<CalcContainer>
+				{/*	<CalcContainer>
 						<CalcHeader>
 							<CalcHeaderItem>
 								<CalcLinks Orange={Orange} to='orange-money'>
@@ -60,11 +57,10 @@ const MainSection = (Orange) => {
 								</CalcLinks>
 							</CalcHeaderItem>
 					</CalcHeader>
-					</CalcContainer>
+            </CalcContainer>*/}
+				<Tab />
 			</MainContent>
-			
 		</MainContainer>
-		
 	);
 };
 

@@ -50,6 +50,7 @@ export const VideoBg = styled.video`
 `;
 export const MainContent = styled.div`
   z-index: 3;
+  height:100%;
   max-width: 1200px;
   position: absolute;
   padding: 8px 16px;
@@ -110,7 +111,7 @@ export const CalcContainer = styled.div`
   justify-content: space-evenly;
   padding-top: 20px;
   padding-bottom: 20px;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #d8f3dc;
   width: 100%;
   text-align: center;
@@ -167,8 +168,9 @@ export const CalcLinks = styled(LinkR)`
     background: white;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-radius: 15px;
-    color: ${({ Orange }) => (Orange ? "#F3722C" : "#fdc500")};;
+    border-radius: 10px;
+    color:black;
+    background: ${({ Orange }) => (Orange ? "#F3722C" : "#fdc500")};
   }
 
   &.active{
