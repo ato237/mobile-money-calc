@@ -9,11 +9,19 @@ import {
 	MainBtnWrapper,
 	ArrowForward,
 	ArrowRight,
+	CalcContainer,
+	CalcHeader,
+	CalcHeaderItem,
+	CalcLinks
 } from "./MainSectionElements";
 import { Button } from "../ButtonElement";
 
 import video from "./video.mp4";
-const MainSection = () => {
+import { FaCalculator } from "react-icons/fa";
+
+
+const MainSection = (Orange) => {
+
 	const [hover, setHover] = useState(false);
 
 	const onHover = () => {
@@ -22,26 +30,41 @@ const MainSection = () => {
 	return (
 		<MainContainer>
 			<MainBg>
-				<VideoBg autoPlay loop muted src={video} type="video.mp4"></VideoBg>
+				
 			</MainBg>
 			<MainContent>
-				<MainH1> Simple Charges Calculator </MainH1>
+				<MainH1> Charges Calculator </MainH1>
 				<MainP>
-					Calculate How Much Charges Is Required to transfer the desired Amount
-					In your desired Mobile Money Provider.
+					Calculate The Charges required to transfer your desired amount
 				</MainP>
 				<MainBtnWrapper>
-					<Button
+					{/*<Button
 						to="signup"
 						onMouseEnter={onHover}
 						onMouseEnter={onHover}
 						primary="true"
 						dark="true">
 						Get Started {hover ? <ArrowForward /> : <ArrowRight />}
-					</Button>
+					</Button>*/}
 				</MainBtnWrapper>
+				<CalcContainer>
+						<CalcHeader>
+							<CalcHeaderItem>
+								<CalcLinks Orange={Orange} to='orange-money'>
+									Orange Money
+								</CalcLinks>
+							</CalcHeaderItem>
+							<CalcHeaderItem>
+								<CalcLinks to='mtn-momo'>
+									MTN Mobile Money
+								</CalcLinks>
+							</CalcHeaderItem>
+					</CalcHeader>
+					</CalcContainer>
 			</MainContent>
+			
 		</MainContainer>
+		
 	);
 };
 
