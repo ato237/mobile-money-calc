@@ -9,7 +9,7 @@ export const homeObjOne = {
     description: 'Knowing how much charges is required for withdrawal or sendal of money is common problem among mobile money customers. You can now quickly calculate how much additional fee you need to include when sending money to someone easily.',
     buttonLabel: 'Get Started',
     imgStart: false,
-    img: require('../../images/problem.svg').default,
+    img: require('../../images/img7.svg').default,
     alt: 'Car',
     dark: true,
     primary: true,
@@ -28,7 +28,7 @@ export const homeObjTwo = {
     description: 'Get access to our exclusive app that allows you to sebd unlimited transactions without getting charged any fees.',
     buttonLabel: 'Learn More',
     imgStart: true,
-    img: require('../../images/img2.svg').default,
+    img: require('../../images/img6.svg').default,
     alt: 'Car',
     dark: true,
     primary: true,
@@ -39,18 +39,18 @@ export const homeObjTwo = {
 
 export const homeObjThree = {
     id: 'services',
-    lightBg: true,
-    lightText: false,
+    lightBg: false,
+    lightText: true,
     lightTextDesc: false,
     topLine: 'Premium Bank',
     headLine: 'Unlimited Transactions with zero fees',
     description: 'Get access to our exclusive app that allows you to sebd unlimited transactions without getting charged any fees.',
     buttonLabel: 'Get Started',
     imgStart: false,
-    img: require('../../images/img3.svg').default,
+    img: require('../../images/img5.svg').default,
     alt: 'Car',
     dark: true,
     primary: true,
-    darkText: true
+    darkText: false
     
 }
