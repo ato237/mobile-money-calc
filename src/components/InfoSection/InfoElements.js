@@ -22,7 +22,7 @@ export const InfoWrapper = styled.div`
 `;
 
 export const InfoRow = styled.div`
-  margin-top: 80px;
+  margin-top: 180px;
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
@@ -31,7 +31,7 @@ export const InfoRow = styled.div`
 
   @media screen and (max-width: 768px) {
     height: 860px;
-    margin-top: 0;
+    margin-top: 50px;
     grid-template-areas: ${({ imgStart }) =>
       imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`};
   }
