@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import InfoSection from "../components/InfoSection";
 import {
   homeObjOne,
-  homeObjThree,
   homeObjTwo,
 } from "../components/InfoSection/Data";
 import MainSection from "../components/MainSection";

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createTheme } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
@@ -51,6 +51,17 @@ function a11yProps(index) {
   };
 }
 
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 500,
+      sm: 600,
+      md: 768,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
+});
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -60,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tabItemO: {
     background: "#d8f3dc",
-    width: 400,
+    width: 600,
     color: "#000",
     "&:hover": {
       background: "#F3722C",
@@ -77,12 +88,12 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
     },
 
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       width: 100,
     },
   },
   tabItemE: {
-    width: 400,
+    width: 600,
     background: "#d8f3dc",
     color: "#000",
     "&:hover": {
@@ -90,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
       borderBottom: "white",
     },
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       width: 100,
     },
     "&$selected": {
@@ -119,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "red",
       color: "white",
     },
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       // eslint-disable-line no-useless-computed-key
       width: 100,
     },
@@ -131,7 +142,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-start",
     padding: "10px !important",
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       // eslint-disable-line no-useless-computed-key
       padding: "0px !important",
       display: "grid",
@@ -139,12 +150,12 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     marginLeft: "30px",
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       // eslint-disable-line no-useless-computed-key
       margin: 0,
       width: "420px",
     },
-    ["@media (max-width:600px)"]: {
+    [theme.breakpoints.down("xs")]: {
       // eslint-disable-line no-useless-computed-key
       margin: 0,
       width: "220px",
@@ -159,7 +170,7 @@ const useStyles = makeStyles((theme) => ({
       background: "orange",
       color: "#fff",
     },
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       // eslint-disable-line no-useless-computed-key
       margin: 0,
       padding: 0,
@@ -175,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
       background: "orange",
       color: "#fff",
     },
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("sm")]: {
       // eslint-disable-line no-useless-computed-key
       margin: 0,
       padding: 0,
@@ -191,7 +202,7 @@ const useStyles = makeStyles((theme) => ({
       background: "orange",
       color: "#fff",
     },
-    ["@media (max-width:768px)"]: {
+    [theme.breakpoints.down("md")]: {
       // eslint-disable-line no-useless-computed-key
       margin: 0,
       padding: 0,
@@ -216,6 +227,8 @@ export default function SimpleTab(props) {
   const [value, setValue] = React.useState(0);
   const [amount, setAmount] = React.useState();
   const [amountError, setAmountError] = React.useState(false);
+  const [amountError1, setAmountError1] = React.useState(false);
+
   const [calculatedValue, setCalculatedValue] = React.useState("");
   const [finalValue, setFinalValue] = React.useState(amount);
   const [amount1, setAmount1] = React.useState("");
@@ -310,6 +323,11 @@ export default function SimpleTab(props) {
   };
   const calculateMobileMoney = (e) => {
     e.preventDefault();
+
+    setAmountError1(false);
+    if (amount1 == "") {
+      setAmountError1(true);
+    }
     if (amount1 && withdrawal === "retrait") {
       console.log(amount1, withdrawal);
     }
@@ -511,6 +529,7 @@ export default function SimpleTab(props) {
             helperText="Enter Amount"
             label="XAF"
             variant="outlined"
+            error={amountError1}
           />
 
           <TextField
