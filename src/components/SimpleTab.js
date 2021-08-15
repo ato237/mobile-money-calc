@@ -54,6 +54,7 @@ function a11yProps(index) {
 const theme = createTheme({
   breakpoints: {
     values: {
+      ip5:328,
       xs: 500,
       sm: 600,
       md: 768,
@@ -89,6 +90,9 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.down("sm")]: {
+      width: 200,
+    },
+    [theme.breakpoints.down("xs")]: {
       width: 100,
     },
   },
@@ -102,6 +106,9 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "white",
     },
     [theme.breakpoints.down("sm")]: {
+      width: 200,
+    },
+    [theme.breakpoints.down("xs")]: {
       width: 100,
     },
     "&$selected": {
@@ -132,6 +139,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       // eslint-disable-line no-useless-computed-key
+      width: 200,
+    },
+    [theme.breakpoints.down("xs")]: {
       width: 100,
     },
   },
@@ -209,16 +219,27 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   heading: {
+    maxWidth: "420px",
     margin: "10px",
     fontSize: "24px",
     color: "#F3722C",
     fontWeight: 500,
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "220px",
+      fontSize: "18px",
+    },
   },
   headingY: {
+    maxWidth: "420px",
+
     margin: "10px",
     fontSize: "24px",
     color: "orange",
     fontWeight: 500,
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "220px",
+      fontSize: "18px",
+    },
   },
 }));
 
