@@ -13,23 +13,23 @@ import {
   ImgWrap,
   Img,
 } from "./InfoElements";
-import { Button } from "../ButtonElement";
+/*import { Button } from "../ButtonElement";*/
 
 const InfoSection = ({
   lightBg,
   id,
   topLine,
   imgStart,
-  buttonLabel,
+ //buttonLabel,
   description,
   darkText,
   headLine,
   lightText,
-  lighTextDesc,
+  //lighTextDesc,
   img,
-  dark,
+ /* dark,
   dark2,
-  primary,
+  primary,*/
   alt,
 }) => {
   return (
