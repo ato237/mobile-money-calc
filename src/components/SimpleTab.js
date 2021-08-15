@@ -198,23 +198,23 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   heading: {
-    margin: '10px',
+    margin: "10px",
     fontSize: "24px",
     color: "#F3722C",
-    fontWeight: 500
+    fontWeight: 500,
   },
   headingY: {
-    margin: '10px',
+    margin: "10px",
     fontSize: "24px",
     color: "orange",
-    fontWeight: 500
+    fontWeight: 500,
   },
 }));
 
 export default function SimpleTab(props) {
   const classes = useStyles(props);
   const [value, setValue] = React.useState(0);
-  const [amount, setAmount] = React.useState("");
+  const [amount, setAmount] = React.useState();
   const [amountError, setAmountError] = React.useState(false);
   const [calculatedValue, setCalculatedValue] = React.useState("");
   const [finalValue, setFinalValue] = React.useState(amount);
@@ -371,6 +371,53 @@ export default function SimpleTab(props) {
         setSubmitted1(true);
       }
     }
+    if (amount && withdrawal === "retrait") {
+      if (amount >= 100 && amount <= 5999) {
+        setCalculatedValue(amount * (3 / 100));
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 6000 && amount <= 10050) {
+        setCalculatedValue(175);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue);
+      } else if (amount >= 10051 && amount <= 13550) {
+        setCalculatedValue(300);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 25051 && amount <= 50050) {
+        setCalculatedValue(700);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 50001 && amount <= 75100) {
+        setCalculatedValue(1350);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 75101 && amount <= 100100) {
+        setCalculatedValue(1800);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 100101 && amount <= 200500) {
+        setCalculatedValue(2150);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 200501 && amount <= 300500 && withdrawal) {
+        setCalculatedValue(2600);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 300501 && amount <= 400500) {
+        setCalculatedValue(3100);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 400501 && amount <= 500000) {
+        setCalculatedValue(3500);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      } else if (amount >= 500000 && amount <= 1000000) {
+        setCalculatedValue(4000);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+      }
+    }
   };
   const calculateExpressUnion = (e) => {
     e.preventDefault();
@@ -497,7 +544,9 @@ export default function SimpleTab(props) {
           {isSubmitted1 ? "Charges: " + calculatedValue1 : finalValue1}
         </h3>
         <h3 className={classes.headingY}>
-          {isSubmitted1 ? "Amount To Be Sent: " + finalValue1 : calculatedValue1}
+          {isSubmitted1
+            ? "Amount To Be Sent: " + finalValue1
+            : calculatedValue1}
         </h3>
       </TabPanel>
       <TabPanel value={value} index={2}>
