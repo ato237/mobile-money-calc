@@ -61,11 +61,11 @@ export const MainContent = styled.div`
 
 export const MainH1 = styled.h1`
   color: #fff;
-  font-size: 38px;
+  font-size: 30px;
   text-align: center;
 
   @media screen and (max-width: 768px) {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   @media screen and (max-width: 768px) {

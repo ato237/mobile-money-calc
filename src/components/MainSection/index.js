@@ -30,7 +30,7 @@ const MainSection = (Orange) => {
 		<MainContainer>
 			<MainBg></MainBg>
 			<MainContent>
-				<MainH1> Charges Calculator </MainH1>
+				<MainH1> Simplest Way To Get Mobile Money Charges </MainH1>
 				<MainP>
 					Calculate The Charges required to transfer your desired amount
 				</MainP>

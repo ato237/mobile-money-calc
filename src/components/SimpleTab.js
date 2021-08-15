@@ -139,6 +139,16 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     marginLeft: "30px",
+    ["@media (max-width:768px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      margin: 0,
+      width: "420px",
+    },
+    ["@media (max-width:600px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      margin: 0,
+      width: "220px",
+    },
   },
   buttonO: {
     background: "#F3722C",
@@ -187,6 +197,18 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
     },
   },
+  heading: {
+    margin: '10px',
+    fontSize: "24px",
+    color: "#F3722C",
+    fontWeight: 500
+  },
+  headingY: {
+    margin: '10px',
+    fontSize: "24px",
+    color: "orange",
+    fontWeight: 500
+  },
 }));
 
 export default function SimpleTab(props) {
@@ -196,7 +218,11 @@ export default function SimpleTab(props) {
   const [amountError, setAmountError] = React.useState(false);
   const [calculatedValue, setCalculatedValue] = React.useState("");
   const [finalValue, setFinalValue] = React.useState(amount);
+  const [amount1, setAmount1] = React.useState("");
+  const [calculatedValue1, setCalculatedValue1] = React.useState("");
+  const [finalValue1, setFinalValue1] = React.useState(amount1);
   const [isSubmitted, setSubmitted] = React.useState(false);
+  const [isSubmitted1, setSubmitted1] = React.useState(false);
 
   const [withdrawal, setWithdrawal] = React.useState("retrait");
 
@@ -212,66 +238,138 @@ export default function SimpleTab(props) {
     setAmount(e.target.value);
     e.preventDefault();
   };
+  const handleAmountChange1 = (e) => {
+    setAmount1(e.target.value);
+    e.preventDefault();
+  };
 
-	const calculateOrangeMoney = (e) => {
-		e.preventDefault();
-		setAmountError(false);
-		if (amount == "") {
-			setAmountError(true);
-		}
-		if (amount && withdrawal === 'retrait') {
-			if (amount >= 50 && amount <= 6500) {
-				setCalculatedValue(amount * (3 / 100));
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			}
-			else if (amount >= 6501 && amount <= 10000) {
-				setCalculatedValue(180);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue);
-			} else if (amount >= 10001 && amount <= 13500) {
-				setCalculatedValue(300);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 13501 && amount <= 25000) {
-				setCalculatedValue(350);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 25001 && amount <= 50000) {
-				setCalculatedValue(700);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 50001 && amount <= 80000) {
-				setCalculatedValue(1350);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 80001 && amount <= 100000) {
-				setCalculatedValue(1800);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 100001 && amount <= 200000 && withdrawal) {
-				setCalculatedValue(2150);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 200001 && amount <= 300000) {
-				setCalculatedValue(3100);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 300001 && amount <= 400000) {
-				setCalculatedValue(3600);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			} else if (amount >= 400001 && amount <= 500000) {
-				setCalculatedValue(3600);
-				setFinalValue(parseInt(amount) + parseInt(calculatedValue));
-				console.log(finalValue, calculatedValue);
-			}
-		};
-	}
+  const calculateOrangeMoney = (e) => {
+    e.preventDefault();
+    setAmountError(false);
+    if (amount == "") {
+      setAmountError(true);
+    }
+    if (amount && withdrawal === "retrait") {
+      if (amount >= 50 && amount <= 6500) {
+        setCalculatedValue(amount * (3 / 100));
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 6501 && amount <= 10000) {
+        setCalculatedValue(180);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue);
+        setSubmitted(true);
+      } else if (amount >= 10001 && amount <= 13500) {
+        setCalculatedValue(300);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 13501 && amount <= 25000) {
+        setCalculatedValue(350);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 25001 && amount <= 50000) {
+        setCalculatedValue(700);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 50001 && amount <= 80000) {
+        setCalculatedValue(1350);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 80001 && amount <= 100000) {
+        setCalculatedValue(1800);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 100001 && amount <= 200000 && withdrawal) {
+        setCalculatedValue(2150);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 200001 && amount <= 300000) {
+        setCalculatedValue(3100);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 300001 && amount <= 400000) {
+        setCalculatedValue(3600);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      } else if (amount >= 400001 && amount <= 500000) {
+        setCalculatedValue(3600);
+        setFinalValue(parseInt(amount) + parseInt(calculatedValue));
+        console.log(finalValue, calculatedValue);
+        setSubmitted(true);
+      }
+    }
+  };
   const calculateMobileMoney = (e) => {
     e.preventDefault();
-    if (amount && withdrawal === "retrait") {
-      console.log(amount, withdrawal);
+    if (amount1 && withdrawal === "retrait") {
+      console.log(amount1, withdrawal);
+    }
+    if (amount1 && withdrawal === "retrait") {
+      if (amount1 >= 100 && amount1 <= 5500) {
+        setCalculatedValue1(amount1 * (3 / 100));
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 5551 && amount1 <= 10050) {
+        setCalculatedValue1(180);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 10051 && amount1 <= 13550) {
+        setCalculatedValue1(300);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 13551 && amount1 <= 25050) {
+        setCalculatedValue1(350);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 25051 && amount1 <= 50050) {
+        setCalculatedValue1(700);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 50051 && amount1 <= 75100) {
+        setCalculatedValue1(1350);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 75101 && amount1 <= 100100) {
+        setCalculatedValue1(1800);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 100101 && amount1 <= 200500 && withdrawal) {
+        setCalculatedValue1(2150);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 200501 && amount1 <= 300500) {
+        setCalculatedValue1(2600);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 300501 && amount1 <= 400500) {
+        setCalculatedValue1(3100);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      } else if (amount1 >= 400501 && amount1 <= 500000) {
+        setCalculatedValue1(3500);
+        setFinalValue1(parseInt(amount1) + parseInt(calculatedValue1));
+        console.log(finalValue1, calculatedValue1);
+        setSubmitted1(true);
+      }
     }
   };
   const calculateExpressUnion = (e) => {
@@ -279,7 +377,7 @@ export default function SimpleTab(props) {
     if (amount && withdrawal) {
       console.log(amount, withdrawal);
     }
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -350,14 +448,18 @@ export default function SimpleTab(props) {
             Calculate
           </Button>
         </form>
-        <h3>{isSubmitted ? calculatedValue : finalValue}</h3>
-        <h3>{isSubmitted ? finalValue : calculatedValue}</h3>
+        <h3 className={classes.heading}>
+          {isSubmitted ? "Charges: " + calculatedValue : finalValue}
+        </h3>
+        <h3 className={classes.heading}>
+          {isSubmitted ? "Amount To Be Sent: " + finalValue : calculatedValue}
+        </h3>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <form className={classes.form}>
           <TextField
-            value={amount}
-            onChange={handleAmountChange}
+            value={amount1}
+            onChange={handleAmountChange1}
             id="outlined-basic"
             helperText="Enter Amount"
             label="XAF"
@@ -391,6 +493,12 @@ export default function SimpleTab(props) {
             Calculate
           </Button>
         </form>
+        <h3 className={classes.headingY}>
+          {isSubmitted1 ? "Charges: " + calculatedValue1 : finalValue1}
+        </h3>
+        <h3 className={classes.headingY}>
+          {isSubmitted1 ? "Amount To Be Sent: " + finalValue1 : calculatedValue1}
+        </h3>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <form className={classes.form}>
@@ -430,6 +538,8 @@ export default function SimpleTab(props) {
             Calculate
           </Button>
         </form>
+        <h3>{isSubmitted ? calculatedValue : finalValue}</h3>
+        <h3>{isSubmitted ? finalValue : calculatedValue}</h3>
       </TabPanel>
     </div>
   );
